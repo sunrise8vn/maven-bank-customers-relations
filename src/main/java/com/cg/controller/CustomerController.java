@@ -6,14 +6,12 @@ import com.cg.service.customer.ICustomerService;
 import com.cg.service.transfer.ITransferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
-import java.sql.SQLException;
 import java.util.Optional;
 
 @Controller

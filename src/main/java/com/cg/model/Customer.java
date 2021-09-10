@@ -37,7 +37,7 @@ public class Customer extends BaseEntity {
     private String phone;
     private String address;
 
-    @Digits(integer = 9, fraction = 0)
+    @Digits(integer = 12, fraction = 0)
     @Column(updatable = false)
     private BigDecimal balance;
 

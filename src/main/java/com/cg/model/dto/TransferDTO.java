@@ -30,7 +30,7 @@ public class TransferDTO implements Validator {
 
     @NotNull(message = "The transfer amount is required")
     @DecimalMin(value = "49", message = "Transaction Amount must be greater than or equal to 50", inclusive = false)
-    @DecimalMax(value = "10000001", message = "Transaction Amount must be less than or equal to 10.000.000", inclusive = false)
+    @DecimalMax(value = "10000000001", message = "Transaction Amount must be less than or equal to 10.000.000.000", inclusive = false)
     private BigDecimal transferAmount;
 
     private int fees;
@@ -57,7 +57,7 @@ public class TransferDTO implements Validator {
         BigDecimal transferAmount = transferDTO.getTransferAmount();
 
         if (transferAmount != null) {
-            if (transferAmount.toString().length() > 9){
+            if (transferAmount.toString().length() > 12){
                 errors.rejectValue("transferAmount", "transferAmount.length");
             }
 

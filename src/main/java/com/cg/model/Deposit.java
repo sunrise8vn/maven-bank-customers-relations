@@ -30,7 +30,7 @@ public class Deposit extends BaseEntity {
     private Customer customer;
 
 
-    @Digits(integer = 9, fraction = 0)
+    @Digits(integer = 12, fraction = 0)
     @Column(name = "transaction_amount", nullable= false)
     private BigDecimal transactionAmount;
 

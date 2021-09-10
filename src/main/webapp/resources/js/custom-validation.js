@@ -82,7 +82,7 @@ $(document).ready(function () {
         rules: {
             transactionAmount: {
                 required: true,
-                maxlength: 7
+                maxlength: 14
             }
         },
         errorLabelContainer: ".alert-danger",
@@ -100,7 +100,7 @@ $(document).ready(function () {
         messages: {
             transactionAmount: {
                 required: "Không được để trống trường này",
-                maxlength: "Số tiền tối đa là 9.999.999"
+                maxlength: "Số tiền tối đa là 10.000.000.000"
             }
         }
     });
