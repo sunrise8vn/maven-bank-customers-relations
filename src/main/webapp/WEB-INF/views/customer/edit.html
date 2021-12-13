@@ -16,9 +16,9 @@
                 </div>
             </div>
         </div>
-        <form id="frmUpdateCustomer" th:object="${customer}" method="post">
+        <form id="frmUpdateCustomer" th:object="${customer}" th:method="put">
             <fieldset class="row g-3">
-                <input th:type="hidden" th:field="*{id}">
+<!--                <input th:type="hidden" th:field="*{id}">-->
                 <div class="col-md-6">
                     <label class="form-label">Full name</label>
                     <input type="text" class="form-control" th:field="*{fullName}">

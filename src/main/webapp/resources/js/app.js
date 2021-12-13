@@ -1,10 +1,4 @@
 class App {
-    // static BASE_URL_CUSTOMER = "https://mysterious-mountain-94405.herokuapp.com/api/customers";
-    // static BASE_URL_PROVINCE = "https://mysterious-mountain-94405.herokuapp.com/api/provinces";
-
-    static BASE_URL_CUSTOMER = "http://localhost:8091/api/customers";
-    static BASE_URL_PROVINCE = "http://localhost:8091/api/provinces";
-
     static showDeleteConfirmDialog() {
         return Swal.fire({
             icon: 'warning',
@@ -46,7 +40,7 @@ class Customer {
     }
 }
 
-$(document).ready(function() {
+$(function() {
     $(".num-space").number(true, 0, ',', ' ');
     $(".num-point").number(true, 0, ',', '.');
     $(".num-comma").number(true, 0, ',', ',');

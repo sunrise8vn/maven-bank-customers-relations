@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Transfer money Information</title>
-    <th:block th:replace="/layout/head :: head"></th:block>
+    <th:block th:replace="/layout/head :: head" />
 </head>
 <body>
     <div class="container">
@@ -12,7 +12,10 @@
                     <h1>Transfer money Information</h1>
                 </div>
                 <div class="col-sm-6">
-                    <a href="/customers" class="btn btn-outline-light"><i class="fa fa-list" aria-hidden="true"></i> <span>Customer list</span></a>
+                    <a href="/customers" class="btn btn-outline-light">
+                        <i class="fa fa-list" aria-hidden="true"></i>
+                        <span>Customer list</span>
+                    </a>
                 </div>
             </div>
         </div>

@@ -12,7 +12,10 @@
                     <h1>Create customer</h1>
                 </div>
                 <div class="col-sm-6">
-                    <a href="/customers" class="btn btn-outline-light"><i class="fa fa-list" aria-hidden="true"></i> <span>Customer list</span></a>
+                    <a href="/customers" class="btn btn-outline-light">
+                        <i class="fa fa-list" aria-hidden="true"></i>
+                        <span>List of customers</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -43,11 +46,15 @@
             </fieldset>
         </form>
     </div>
+
+    <th:block th:replace="/layout/script :: script" />
+
     <div class="footer">
         <div id="message-alert">
             <th:block th:if="${script} == true">
                 <div class="alert-danger">
                     <h5>Please correct errors below:</h5>
+<!--                    <label th:each="err : ${#fields.errors('customer.*')}" id="fullName-error" class="error" for="fullName" th:text="${err}"></label>-->
                     <ul>
                         <li th:each="err : ${#fields.errors('customer.*')}" th:text="${err}"></li>
                     </ul>
@@ -71,7 +78,7 @@
                 </script>
             </th:block>
             <div class="alert-danger hide">
-                <h5>Please correct errors below 2:</h5>
+                <h5>Please correct errors below FE:</h5>
             </div>
             <th:block th:if="${error}">
                 <div class="alert-danger">
@@ -84,7 +91,7 @@
         </div>
     </div>
 
-    <th:block th:replace="/layout/script :: script" />
+
 
 </body>
 </html>

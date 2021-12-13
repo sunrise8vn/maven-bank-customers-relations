@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -23,7 +24,7 @@ public class TransferController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/transfer/list");
 
-        Iterable<ITransferDTO> iTransferDTOS = transferService.findAllByITransferDTO();
+        List<ITransferDTO> iTransferDTOS = transferService.findAllByITransferDTO();
         Optional<SumFeesAmountDTO> sumFeesAmount = transferService.sumFeesAmount();
 
         modelAndView.addObject("iTransferDTOS", iTransferDTOS);

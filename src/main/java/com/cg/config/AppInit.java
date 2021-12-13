@@ -30,7 +30,6 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
 
         HiddenHttpMethodFilter httpMethodFilter = new HiddenHttpMethodFilter();
         return  new Filter[]{characterEncodingFilter, httpMethodFilter};
-
     }
 
 }

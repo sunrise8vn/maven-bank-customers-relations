@@ -5,6 +5,7 @@ import com.cg.model.Customer;
 import com.cg.service.customer.ICustomerService;
 import com.cg.service.transfer.ITransferService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -143,7 +144,7 @@ public class CustomerController {
                     customerService.save(customer);
 
                     modelAndView.addObject("customer", new Customer());
-                    modelAndView.addObject("success", "Successfully added new customers");
+                    modelAndView.addObject("success", "Successfully added new customer");
                 } catch (Exception e) {
                     e.printStackTrace();
                     modelAndView.addObject("error", "Invalid data, please contact system administrator");
@@ -154,8 +155,8 @@ public class CustomerController {
         return modelAndView;
     }
 
-    @PostMapping("/edit/{id}")
-    public ModelAndView updateCustomer(@PathVariable Long id,@Validated @ModelAttribute("customer") Customer customer, BindingResult bindingResult) {
+    @PutMapping("/edit/{id}")
+    public ModelAndView updateCustomer(@Validated @ModelAttribute("customer") Customer customer, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView("/customer/edit");
 
         if (bindingResult.hasFieldErrors()){
@@ -192,7 +193,7 @@ public class CustomerController {
 
                 modelAndView.addObject("depositDTO", customerService.findByIdWithDepositDTO(customerId).get());
                 modelAndView.addObject("success", "Successful deposit transaction");
-            } catch (Exception e) {
+            } catch (DataIntegrityViolationException e) {
                 e.printStackTrace();
                 modelAndView.addObject("error", "Invalid data, please contact system administrator");
             }
@@ -216,7 +217,7 @@ public class CustomerController {
             BigDecimal current_balance = customer.get().getBalance();
             BigDecimal transactionAmount = withdrawDTO.getTransactionAmount();
 
-            if (current_balance.compareTo(transactionAmount) != -1) {
+            if (current_balance.compareTo(transactionAmount) >= 0) {
                 try {
                     customerService.doWithdraw(customerId, withdrawDTO);
 
@@ -257,7 +258,7 @@ public class CustomerController {
             Optional<Customer> recipient = customerService.findById(transferDTO.getRecipientId());
 
             if (recipient.isPresent()) {
-                if (sender_balance.compareTo(transactionAmount) != -1) {
+                if (sender_balance.compareTo(transactionAmount) >= 0) {
                     try {
                         transferDTO.setFees(fees);
                         transferDTO.setFeesAmount(feeAmount);
@@ -293,12 +294,13 @@ public class CustomerController {
         if (customer.isPresent()) {
             customer.get().setDeleted(true);
             customerService.save(customer.get());
-            modelAndView.addObject("customer", customerService.findById(customerId).get());
+            modelAndView.addObject("customer", customer.get());
             modelAndView.addObject("success", "Customer suspended successfully");
             return modelAndView;
         } else {
             return new ModelAndView("/error.404");
         }
     }
+
 
 }

@@ -56,7 +56,7 @@
                     <div class="mb-3 col-md-3">
                         <label class="col-sm-12 col-form-label">Transfer Amount ($)</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control num-space" th:field="*{transferAmount}">
+                            <input type="text" id="transferAmount" class="form-control num-space" th:field="*{transferAmount}">
                         </div>
                     </div>
                     <div class="mb-3 col-md-3">
@@ -85,6 +85,9 @@
             </fieldset>
         </form>
     </div>
+
+    <th:block th:replace="/layout/script :: script" />
+
     <div class="footer">
         <div id="message-alert">
             <th:block th:if="${script} == true">
@@ -113,7 +116,7 @@
                 </script>
             </th:block>
             <div class="alert-danger hide">
-                <h5>Please correct errors below:</h5>
+                <h5>Please correct errors below FE:</h5>
             </div>
             <th:block th:if="${error}">
                 <div class="alert-danger">
@@ -126,10 +129,10 @@
         </div>
     </div>
 
-    <th:block th:replace="/layout/script :: script" />
+
 
     <script>
-        $(document).ready(function() {
+        $(function() {
             $("#transferAmount").on("change", function () {
                 let transferAmount = $(this).val();
                 let fees = 10;

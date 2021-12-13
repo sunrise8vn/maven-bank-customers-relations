@@ -1,5 +1,5 @@
 
-$(document).ready(function () {
+$(function () {
     $("#frmCreateCustomer").validate({
         onkeyup: function(element) { $(element).valid() },
         onclick: false,
@@ -23,7 +23,7 @@ $(document).ready(function () {
             }
         },
         errorLabelContainer: ".alert-danger",
-        errorPlacement: function (error, element) {
+        errorPlacement: function (error) {
             error.appendTo(".alert-danger");
         },
         showErrors: function(errorMap, errorList) {
@@ -69,9 +69,6 @@ $(document).ready(function () {
                 minlength: "Hãy nhập tối thiểu 5 ký tự",
                 maxlength: "Hãy nhập tối đa 50 ký tự"
             }
-        },
-        submitHandler: function() {
-            updateCustomer();
         }
     });
 
@@ -104,4 +101,35 @@ $(document).ready(function () {
             }
         }
     });
+
+    $("#frmTransfer").validate({
+        onkeyup: function(element) {$(element).valid()},
+        onclick: false,
+        rules: {
+            transferAmount: {
+                required: true,
+                minlength: 3,
+                maxlength: 8
+            }
+        },
+        errorLabelContainer: ".alert-danger",
+        errorPlacement: function (error, element) {
+            error.appendTo(".alert-danger");
+        },
+        showErrors: function(errorMap, errorList) {
+            if (this.numberOfInvalids() > 0) {
+                $("#message-alert .alert-danger").removeClass("hide");
+            } else {
+                $("#message-alert .alert-danger").addClass("hide");
+            }
+            this.defaultShowErrors();
+        },
+        messages: {
+            transferAmount: {
+                required: "Bắt buộc nhập số tiền muốn chuyển đầy đủ",
+                minlength: "Hãy nhập tối thiểu {0} ký tự",
+                maxlength: "Hãy nhập tối đa {0} ký tự"
+            }
+        }
+    })
 });

@@ -19,16 +19,13 @@ import java.math.BigDecimal;
 @Accessors(chain = true)
 public class Deposit extends BaseEntity {
 
-    private static final long serialVersionUID = 1L;
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private Customer customer;
-
 
     @Digits(integer = 12, fraction = 0)
     @Column(name = "transaction_amount", nullable= false)

@@ -20,10 +20,8 @@ import java.util.Set;
 @Accessors(chain = true)
 public class Customer extends BaseEntity {
 
-    private static final long serialVersionUID = 1L;
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String fullName;

@@ -46,7 +46,7 @@
                         <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Transaction Amount ($)</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control num-space" th:field="*{transactionAmount}" maxlength="11" />
+                                <input type="text" class="form-control" th:field="*{transactionAmount}" th:value="0" />
     <!--                            <p th:if="${#fields.hasErrors('transactionAmount')}" th:errorclass="th-error" th:errors="*{transactionAmount}">Name Error</p>-->
                             </div>
                         </div>
